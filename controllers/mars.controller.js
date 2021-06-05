@@ -6,6 +6,4 @@ async function getManifest(req, res){
     //COMPLETE WITH YOUR CODE
 };
 
-
-
 module.exports = {getManifest};
