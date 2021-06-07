@@ -1,5 +1,5 @@
 # "Backend with Node.js" - Task 2
-## Package version and dotenv
+## Package version and dotenv 
 You must change the package version to 1.1.0.
 You must read the ApiKey value from `.env` file, using the `dotenv` package. The creation of the `.env` file should be done by you.
 
