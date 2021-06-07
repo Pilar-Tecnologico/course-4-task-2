@@ -18,7 +18,7 @@ async function getManifest(req, res){
                 code: 'bad_request',
                 message: 'Bad request. Please check your parameters values'
             });
-        })
+        });
 };
 
 module.exports = {getManifest};
