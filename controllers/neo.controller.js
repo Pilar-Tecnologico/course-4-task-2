@@ -18,7 +18,7 @@ async function getNeoFeed(req, res){
             console.log(error.message);
             res.status(500).json({
               code: "internal_server_error",
-              message: "Something went wrong",
+              message: "Something went wrong"
             });
         });
 };
