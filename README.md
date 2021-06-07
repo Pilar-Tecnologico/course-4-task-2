@@ -62,7 +62,7 @@ For more information about this endpoint, check the NASA Documentation at https:
 **200 OK**
 ```json
 {
-  "element_count": 11,
+  "element_count": 1,
   "near_earth_objects": {
     "2021-06-05": [
       {
