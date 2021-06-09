@@ -1,65 +1,82 @@
 # "Backend with Node.js" - Task 2
-## Package version and dotenv
-You must change the package version to 1.1.0.
-You must read the ApiKey value from `.env` file, using the `dotenv` package. The creation of the `.env` file should be done by you.
 
-You can get your personal API Key [here](https://api.nasa.gov/).
+## Package version and dotenv
+
+You must change the package version to 1.1.0. (Done).
+You must read the ApiKey value from `.env` file, using the `dotenv` package. The creation of the `.env` file should be done by you. (Done)
+
+You can get your personal API Key [here](https://api.nasa.gov/). (Done)
 
 ## Endpoints
-It is required that you code all the specified endpoints below using the NASA APIs.
+
+It is required that you code all the specified endpoints below using the NASA APIs. (Done)
 
 ### GET :: /mars/manifest/:roverName
-This endpoint should get the information of only the **last manifest** of the specified rover.
+
+This endpoint should get the information of only the **last manifest** of the specified rover. (Done)
+
 #### Params
- 1. `roverName` as URL Param.
+
+1.  `roverName` as URL Param.
+
 #### Service to consume
+
 **Mars Rover Photos**
 Use the manifests endpoint:
 
     https://api.nasa.gov/mars-photos/api/v1/manifests/:roverName
+
 You can read the documentation for more information.
+
 #### Responses examples
+
 **200 OK**
+
 ```json
 {
-    "name":  "Curiosity",
-    "landing_date":  "2012-08-06",
-    "launch_date":  "2011-11-26",
-    "status":  "active",
-    "max_sol":  3138,
-    "max_date":  "2021-06-04",
-    "total_photos":  496319,
-    "last_manifest": {
-	    "sol":  3138,
-	    "earth_date":  "2021-06-04",
-	    "total_photos":  32,
-	    "cameras":  [
-		    "FHAZ",
-		    "NAVCAM",
-		    "RHAZ"    
-	    ]    
-    }
+  "name": "Curiosity",
+  "landing_date": "2012-08-06",
+  "launch_date": "2011-11-26",
+  "status": "active",
+  "max_sol": 3138,
+  "max_date": "2021-06-04",
+  "total_photos": 496319,
+  "last_manifest": {
+    "sol": 3138,
+    "earth_date": "2021-06-04",
+    "total_photos": 32,
+    "cameras": ["FHAZ", "NAVCAM", "RHAZ"]
+  }
 }
 ```
- **400 Bad Request**
- If NASA API responds with and error, you should return the response below with status 400.
+
+**400 Bad Request**
+If NASA API responds with and error, you should return the response below with status 400.
+
 ```json
 {
-    "code": "bad_request",
-    "message": "Bad request. Please check your parameters values"
+  "code": "bad_request",
+  "message": "Bad request. Please check your parameters values"
 }
-```	 
+```
+
 ### GET :: /neo/feed
-This endpoint should get the information of the Near Earth Objects (NEO) of **ONLY the current date**.
+
+This endpoint should get the information of the Near Earth Objects (NEO) of **ONLY the current date**. (Done)
+
 #### Service to consume
+
 **NeoWs (Near Earth Object Web Service) - NeoFeed endpoint**
 `https://api.nasa.gov/neo/rest/v1/feed`
 
 While consuming this API the `start_date` and `end_date` query params should always be the current date. For example: If today is `5th June 2021`, then the `start_date` and `end_date` params should be `2021-06-05` (YYYY-MM-DD).
 For ISO 8601 Date formatting, you can use Luxon library: https://moment.github.io/luxon/docs/manual/formatting.html#iso-8601
 For more information about this endpoint, check the NASA Documentation at https://api.nasa.gov/.
+
 #### Responses examples
+
 **200 OK**
+
 ```json
 {
   "element_count": 1,
@@ -118,11 +135,13 @@ For more information about this endpoint, check the NASA Documentation at https:
   }
 }
 ```
+
 **500 Internal Server Error**
 If any error occurrs while consuming the NASA API, the response should be with status 500 and the following json.
+
 ```json
 {
-    "code": "internal_server_error",
-    "message": "Something went wrong"
+  "code": "internal_server_error",
+  "message": "Something went wrong"
 }
 ```
