@@ -6,7 +6,9 @@ async function getNeoFeed(req, res){
     //COMPLETE WITH YOUR CODE
     const now = `${new Date().getFullYear()}-${new Date().getMonth()+1}-${new Date().getDate()}`;
     const paramsQuery = querystring.stringify({start_date: now, end_date: now, api_key:apikey});
-    axios.get(`https://api.nasa.gov/neo/rest/v1/feed?${paramsQuery}`)
+    const url=`https://api.nasa.gov/neo/rest/v1/feed?${paramsQuery}`;
+    //res.send(url);
+    await axios.get(url)
         .then((response) =>{
             console.log(response.data.url);
             const data = response.data;
@@ -15,7 +17,7 @@ async function getNeoFeed(req, res){
             res.status(200).json(data);     
         })
         .catch((err) => {
-            console.log(error.message);
+            console.log(err.message);
             res.status(500).json({
               code: "internal_server_error",
               message: "Something went wrong"

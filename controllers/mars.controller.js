@@ -6,7 +6,9 @@ async function getMarsManifest(req, res){
     //COMPLETE WITH YOUR CODE
     const axiosParams = querystring.stringify({api_key: apikey});
     const roverName = req.params.roverName;
-    axios.get(`https://api.nasa.gov/mars-photos/api/v1/manifests/${roverName}?${axiosParams}`)
+    const url=`https://api.nasa.gov/mars-photos/api/v1/manifests/${roverName}?${axiosParams}`;
+    //const url=`https://mars-photos.herokuapp.com/mars-photos/api/v1/manifests/${roverName}?${axiosParams}`;
+    await axios.get(url)
         .then((resData) => {
             console.log(resData.data.url);
             const data= resData.data.photo_manifest;
