@@ -1,14 +1,14 @@
 const axios = require('axios').default;
 const querystring = require('querystring');
 const {TimeDate} = require("luxon");
-const apikey = process.env.API_KEY;
+const api_key = process.env.API_KEY;
 
 async function getNeoFeed(req, res){
     const todayDate = TimeDate.now().toISODate();
     const urlParams = querystring.stringify({
         start_date: todayDate,
         end_date: todayDate,
-        api_key: apikey
+        api_key: api_key
     });
     axios.get(`https://api.nasa.gov/neo/rest/v1/feed?${urlParams}`)
         .then((response)=>{

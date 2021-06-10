@@ -1,10 +1,10 @@
 const axios = require('axios').default;
 const querystring = require('querystring');
-const apikey = process.env.API_KEY;
+const api_key = process.env.API_KEY;
 
 async function getManifest(req, res){
     const roverName = req.params.roverName;
-    const key = querystring.stringify({apikey});
+    const key = querystring.stringify({api_key});
     axios.get(`https://api.nasa.gov/mars-photos/api/v1/manifests/${roverName}?${key}`)
         .then((response)=>{
             const resData = response.data.photo_manifest;
@@ -15,7 +15,7 @@ async function getManifest(req, res){
         .catch(err=>{
             res.status(400).json({
                 code: 'bad_request',
-                message: 'Bad Request. Please check your parameters values'
+                message: 'Bad Request. Please check your parameters values',
             });
         });
 };

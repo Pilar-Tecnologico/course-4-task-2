@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const {getNewFeed} = require("../controllers/neo.controller");
+const {getNeoFeed} = require("../controllers/neo.controller");
 
 router.get('/feed', async (req, res, next) => {
-  getNewFeed(req, res);
+  getNeoFeed(req, res);
 });
 
 
