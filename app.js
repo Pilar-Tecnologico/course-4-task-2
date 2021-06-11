@@ -14,6 +14,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/mars', marsRouter);
+
 app.use('/neo', neoRouter);
+
 
 module.exports = app;
