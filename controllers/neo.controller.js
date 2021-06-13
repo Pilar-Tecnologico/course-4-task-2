@@ -9,7 +9,7 @@ async function getNeoFeed(req, res){
         start_date: today,
         end_date: today,
         api_key: apikey
-    });    
+    });
     axios.get(`https://api.nasa.gov/neo/rest/v1/feed?${params}`)
         .then((response) => {
             const data = response.data;
