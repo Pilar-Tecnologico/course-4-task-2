@@ -1,9 +1,9 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
+const neoController = require("../controllers/neo.controller");
 
-router.get('/feed', async (req, res, next) => {
-  //COMPLETE WITH YOUR CODE
+router.get("/feed", (req, res, next) => {
+  neoController.getNeoFeed(req, res);
 });
-
 
 module.exports = router;
