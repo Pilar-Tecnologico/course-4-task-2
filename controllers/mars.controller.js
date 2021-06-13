@@ -8,7 +8,15 @@ async function getManifest(req, res){
     const axiosParams = querystring.stringify({api_key: apikey})
     axios.get(`https://api.nasa.gov/mars-photos/api/v1/manifests/${roverName}?${axiosParams}`)
         .then((response) => {
-            res.json(response.data);
+            //photo_manifest
+            const data = response.data.photo_manifest;
+            //photos
+            const lastManifest = data.photos.pop();
+            delete data.photos;
+
+            data.last_manifest = lastManifest;
+
+            res.status(200).json(data);  
         })
         .catch(err =>{
             res.status(400).json({
