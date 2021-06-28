@@ -14,8 +14,6 @@ async function getNeoFeed(req, res){
       //api_key : apiKey
     };
     
-    //const axiosParams = querystring.stringify(queryParams);
-    //const axiosParams = querystring.stringify({api_key: apiKey, ...queryParams});
     const axiosParams = querystring.stringify({api_key: apiKey, ...queryParams});
     
     axios.get(`https://api.nasa.gov/neo/rest/v1/feed?${axiosParams}`)

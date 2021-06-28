@@ -16,7 +16,5 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/mars', marsRouter);
 app.use('/neo', neoRouter);
 
-app.get('/test', (req, res) => {
-    res.send(process.env.API_KEY);
 })
 module.exports = app;
