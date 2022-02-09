@@ -1,8 +1,7 @@
 const express = require('express');
 const router = express.Router();
+//COMPLETE the router
+router.get('/feed', );
 
-router.get('/manifests/:roverName', function(req, res) {
-  //COMPLETE WITH YOUR CODE
-});
 
 module.exports = router;

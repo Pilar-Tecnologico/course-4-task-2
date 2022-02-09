@@ -42,7 +42,7 @@ You can read the documentation for more information.
 }
 ```
  **400 Bad Request**
- If NASA API responds with and error, you should return the response below with status 400.
+ If NASA API responds with an error, you should return the response below with status 400.
 ```json
 {
     "code": "bad_request",
