@@ -126,3 +126,13 @@ If any error occurrs while consuming the NASA API, the response should be with s
     "message": "Something went wrong"
 }
 ```
+/*----------------/learning topics:  --------------------*/
+
+
+### config: Config file: to read domains and environment variables  
+### dotenv: to the ApiKey value from `.env` file (environment variables ) 
+### URLSearchParams: use of the URLSearchParams object. Returns a text string containing a query parameter suitable for use in a URL. 
+### Axios librería JavaScript: to connect to an API. HTTP client operations, configure and make requests and responses easy to process.
+### Destructure javascritp to get specified responses.
+### npm i luxon:params be `2021-06-05` (YYYY-MM-DD). For ISO 8601 Date formatting
+### Handle responses and errors. states 200, 400, 500.
