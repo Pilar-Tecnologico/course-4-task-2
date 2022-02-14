@@ -7,7 +7,7 @@ const { marsSchema } = require("./schemas/nasa.schema");
 const getManifest = async (req, res) => {
   try {
     const { roverName } = req.params;
-    params = {
+    const params = {
       rover_name: roverName,
       api_key: apikey,
     };
