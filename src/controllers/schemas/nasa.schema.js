@@ -1,7 +1,10 @@
 const Joi = require('joi')
 
-const roverSchema = Joi.string().valid('opportunity', 'curiosity', 'spirit').insensitive().required()
- 
+const marsSchema = Joi.object({
+    rover_name: Joi.string().valid('opportunity', 'curiosity', 'spirit').insensitive().required(),
+    api_key: Joi.string().required()
+})
+
 const neoSchema = Joi.object({
     start_date: Joi.date().iso().required(),
     end_date: Joi.date().iso().required(),
@@ -9,6 +12,6 @@ const neoSchema = Joi.object({
 })
 
 module.exports = {
-    roverSchema,
+    marsSchema,
     neoSchema
 }

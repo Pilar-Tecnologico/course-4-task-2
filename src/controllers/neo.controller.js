@@ -8,13 +8,13 @@ const { neoSchema } = require("./schemas/nasa.schema");
 const getNeoFeed = async (req, res) => {
   try {
     const now = DateTime.now().toISODate();
-    const params = {
+    const query = {
       start_date: now,
       end_date: now,
       api_key: apikey,
     };
-    Joi.assert(params, neoSchema);
-    const queryString = new URLSearchParams(params);
+    Joi.assert(query, neoSchema);
+    const queryString = new URLSearchParams(query);
     const response = await axios.get(
       `${hostname}/neo/rest/v1/feed?${queryString.toString()}`
     );
