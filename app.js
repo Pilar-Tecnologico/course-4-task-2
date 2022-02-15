@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
@@ -15,5 +16,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/mars', marsRouter);
 app.use('/neo', neoRouter);
+
+console.log(process.env) // remove this after you've confirmed it working
 
 module.exports = app;
