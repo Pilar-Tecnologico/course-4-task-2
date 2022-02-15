@@ -4,7 +4,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 require('dotenv').config();
-const marsRouter = require('./src/routes/mars');
+const marsRouter = require('./src/routes/mars.js');
 const neoRouter = require('./src/routes/neo');
 const app = express();
 
@@ -18,7 +18,7 @@ app.use('/mars', marsRouter);
 app.use('/neo', neoRouter);
 
 app.get('/',(req,res)=>{
-    res.send(process.env);
+    res.send(process.env.NASA_API);
 });
 
 
