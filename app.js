@@ -1,10 +1,11 @@
+require('dotenv').config()
 const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 require('dotenv').config();
-const marsRouter = require('./routes/mars');
-const neoRouter = require('./routes/neo');
+const marsRouter = require('./src/routes/mars.js');
+const neoRouter = require('./src/routes/neo');
 const app = express();
 
 app.use(logger('dev'));
@@ -15,5 +16,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/mars', marsRouter);
 app.use('/neo', neoRouter);
+
+app.get('/',(req,res)=>{
+    res.send(process.env.NASA_API);
+});
+
+
+// remove this after you've confirmed it working
 
 module.exports = app;
