@@ -1,9 +1,31 @@
-const axios = require('axios').default;
-const config = require('config');
-const {hostname, apikey} = config.get('services.nasa');
+const axios = require("axios").default;
+const config = require("config");
+const Joi = require("joi");
+const { hostname, apikey } = config.get("services.nasa");
+const { DateTime } = require("luxon");
+const { neoSchema } = require("./schemas/nasa.schema");
 
-async function getNeoFeed(req, res){
-    //COMPLETE WITH YOUR CODE
-};
+const getNeoFeed = async (req, res) => {
+  try {
+    const now = DateTime.now().toISODate();
+    const query = {
+      start_date: now,
+      end_date: now,
+      api_key: apikey,
+    };
+    Joi.assert(query, neoSchema);
+    const queryString = new URLSearchParams(query);
+    const response = await axios.get(
+      `${hostname}/neo/rest/v1/feed?${queryString.toString()}`
+    );
+    const { links, ...neoData } = response.data;
+    res.json(neoData);
+  } catch (error) {
+    res.status(500).json({
+      code: "internal_server_error",
+      message: "Something went wrong",
+    });
+  }
+}
 
-module.exports = {getNeoFeed};
+module.exports = { getNeoFeed };
