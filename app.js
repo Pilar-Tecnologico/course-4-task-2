@@ -17,6 +17,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/mars', marsRouter);
 app.use('/neo', neoRouter);
 
-console.log(process.env) // remove this after you've confirmed it working
+app.get('/',(req,res)=>{
+    res.send(process.env);
+});
+
+
+// remove this after you've confirmed it working
 
 module.exports = app;
