@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-//COMPLETE the router
-router.get('/manifests/:roverName', );
+const marsController= require('../controllers/mars.controller');
+router.get('/manifests/:roverName', marsController.getManifest);
 
 module.exports = router;

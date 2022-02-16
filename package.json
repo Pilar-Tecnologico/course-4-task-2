@@ -1,6 +1,6 @@
 {
   "name": "task-2",
-  "version": "0.20.22",
+  "version": "1.1.0",
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
@@ -14,9 +14,22 @@
     "dotenv": "^10.0.0",
     "express": "~4.16.1",
     "joi": "^17.6.0",
+    "luxon": "^2.3.0",
     "morgan": "~1.9.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.7"
-  }
+  },
+  "description": "You must change the package version to 1.1.0.\r You must read the ApiKey value from `.env` file, using the `dotenv` package. The creation of the `.env` file should be done by you.",
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pilar-Tecnologico/course-4-task-2.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Pilar-Tecnologico/course-4-task-2/issues"
+  },
+  "homepage": "https://github.com/Pilar-Tecnologico/course-4-task-2#readme"
 }
