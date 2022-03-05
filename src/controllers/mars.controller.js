@@ -3,6 +3,7 @@ const config                   = require('config');
 const {hostname, apikey}       = config.get('services.nasa');
 const Joi                      = require('joi');
 const { marsSchema }           = require('./schemas/mars-schema');
+const Manifest                 = require('../db/ManifestSchema');
 
 
 async function getManifest(req, res){
@@ -14,10 +15,30 @@ async function getManifest(req, res){
         Joi.assert(data, marsSchema);
         const urlManifest      = `${hostname}/mars-photos/api/v1/manifests/${data.roverName}?api_key=${data.api_key}`;
         const response         = await axios.get(urlManifest);
-        const manifest         = response.data.photo_manifest;
-        manifest.last_manifest = manifest.photos.pop();
-        delete manifest.photos;
-        res.status(200).json(manifest);
+        
+        if(response && response.status === 200) {
+            const manifest         = response.data.photo_manifest;
+            manifest.last_manifest = manifest.photos.pop();
+            delete manifest.photos;
+            
+            const newManifest = new Manifest({
+                name          : manifest.name,
+                landing_date  : manifest.landing_date,
+                launch_date   : manifest.launch_date,
+                status        : manifest.status,
+                max_sol       : manifest.max_sol,
+                max_date      : manifest.max_date,
+                total_photos  : manifest.total_photos,
+                last_manifest : manifest.last_manifest
+
+            })
+
+            await newManifest.save();
+
+            res.status(200).json(manifest);
+        } else {
+            throw new Error();
+        }
         
     } catch (error) {
         res.status(400).json({
