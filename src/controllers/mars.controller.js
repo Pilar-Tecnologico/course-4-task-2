@@ -1,29 +1,30 @@
 const axios = require('axios').default;
 const config = require('config'); //--> Create file .env
 const {hostname, apikey} = config.get('services.nasa');
+const Joi = require("joi");
+const { marsSchema } = require("../schemas/nasa.schemas");
 
 async function getManifest(req, res){
     //COMPLETE WITH YOUR CODE
-    //### GET :: /mars/manifest/:roverName --> 
-    //res.json('Endpoint test /mars/manifest ok!');
-
-    //#### Service to consume: Test axios.get() 
-    //const response = await axios.get(`${hostname}/mars-photos/api/v1/manifests/curiosity?api_key=${apikey}`); 
-
+    
     try {
-        //#### Params--{curiosity, opportunity, spirit}
         const roverName = req.params.roverName;
-        //console.log(roverName); 
 
+        //Validate JOI
+        const params = {
+            rover_name: roverName,
+            api_key: apikey,
+        };
+        Joi.assert(params, marsSchema);
+    
         // Use of the URLSearchParams object. Returns a URL parameter.
         const querystring = new URLSearchParams({
             api_key: apikey
         });
-        //console.log(querystring);//---(.toString. it was not necessary.)
-
+    
         //Service to consume and querystring: 
         const response = await axios.get(`${hostname}/mars-photos/api/v1/manifests/${roverName}?${querystring}`);//.toString. it was not necessary.
-        //console.log(response.data.photo_manifest);
+        
 
         // #### Response: Get 'last_manifest'. Destructure response. Use of pop() and delete to remove 'photos'.
         const data = response.data.photo_manifest;
