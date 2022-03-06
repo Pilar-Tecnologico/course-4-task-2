@@ -3,6 +3,7 @@ const config = require('config'); //--> Create file .env
 const {hostname, apikey} = config.get('services.nasa');
 const Joi = require("joi");
 const { marsSchema } = require("../schemas/nasa.schemas");
+const { Manifest } = require("../models/Nasa.models");
 
 async function getManifest(req, res){
     //COMPLETE WITH YOUR CODE
@@ -30,6 +31,13 @@ async function getManifest(req, res){
         const data = response.data.photo_manifest;
         data['last_manifest'] = data.photos.pop();
         delete data.photos;
+
+        //---mongodb - Guardar data:-----
+        //1- create element to db 
+        const newManifest = new Manifest({...data});
+                
+        //2- save element in db => await db.Nasa.save()
+        await newManifest.save();
 
         res.json(data); //status(200) is default.
 

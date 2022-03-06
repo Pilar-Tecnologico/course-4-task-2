@@ -10,3 +10,12 @@ En base al código realizado en el trabajo práctico 2:
 Entregar link del fork del repositorio resuelto (no Pull request).
 
  ---------------------------------------------------------------
+ /*----//learning topics:  --*/
+
+/*----// commit: JOI VALIDATION: create fields marsSchema, 
+/*-----// commit: Instalaciones: npm install mongoose
+/*----// commit: Create variables enviroment MONGODB_DB: .env'
+/*-----// commit: Read environment variables: config: database:{mongodb:{VARIABLES}} 
+/*-----// commit: Connect db:  create field database.js
+/*----// commit: MONGOOSE MODELS: create field Nasa.models.js 
+/*-----// commit: mongodb - Save data:  new model({}), await db.Nasa.save() 

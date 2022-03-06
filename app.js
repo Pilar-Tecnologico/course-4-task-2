@@ -1,4 +1,5 @@
 const express = require('express');
+require('./src/db/database');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
