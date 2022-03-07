@@ -1,10 +1,13 @@
 const axios = require("axios").default;
 const config = require("config");
 const { hostname, apikey } = config.get("services.nasa");
+const Joi = require("joi");
+const roverSchema = require("./schemas/mars.rover.schema");
 
 async function getManifest(req, res) {
   const { roverName } = req.params;
   try {
+    Joi.assert(roverName, roverSchema);
     const dataApi = await axios.get(
       `${hostname}/mars-photos/api/v1/manifests/${roverName}?api_key=${apikey}`
     );
