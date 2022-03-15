@@ -1,11 +1,11 @@
-const express = require('express');
-const path = require('path');
+const express      = require('express');
+const path         = require('path');
 const cookieParser = require('cookie-parser');
-const logger = require('morgan');
-const dotenv = require('dotenv').config();
-const marsRouter = require('./routes/mars');
-const neoRouter = require('./routes/neo');
-const app = express();
+const logger       = require('morgan');
+require('dotenv').config();
+const marsRouter   = require('./src/routes/mars');
+const neoRouter    = require('./src/routes/neo');
+const app          = express();
 
 app.use(logger('dev'));
 app.use(express.json());
