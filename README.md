@@ -5,6 +5,11 @@ You must read the ApiKey value from `.env` file, using the `dotenv` package. The
 
 You can get your personal API Key [here](https://api.nasa.gov/).
 
+## Project structure
+For every endpoint made, you must follow the code structure we learned in class. 
+
+Router -> Controller -> Services
+
 ## Endpoints
 It is required that you code all the specified endpoints below using the NASA APIs.
 
@@ -62,7 +67,7 @@ For more information about this endpoint, check the NASA Documentation at https:
 **200 OK**
 ```json
 {
-  "element_count": 11,
+  "element_count": 1,
   "near_earth_objects": {
     "2021-06-05": [
       {
