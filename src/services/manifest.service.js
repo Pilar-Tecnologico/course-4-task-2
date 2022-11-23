@@ -8,7 +8,7 @@ const getRover = async (roverName) => {
             
             const { name, landing_date, launch_date, status, max_sol, max_date, total_photos, photos } =
 			response.data.photo_manifest;
-		const last_manifest = photos[photos.length - 1];
+		    const last_manifest = photos[photos.length - 1];
 
 		return {
 			name,
