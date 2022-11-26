@@ -1,6 +1,7 @@
-const express = require('express');
-const router = express.Router();
+import { Router } from 'express';
+import getManifestController from '../controllers/mars.controller.js';
 //COMPLETE the router
-router.get('/manifests/:roverName', );
+const marsRouter = Router();
+marsRouter.get('/manifests/:roverName', getManifestController);
 
-module.exports = router;
+export default marsRouter;
