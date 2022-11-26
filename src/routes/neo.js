@@ -1,7 +1,7 @@
-const express = require('express');
-const router = express.Router();
+import { Router } from 'express';
+import getNeoFeedController from '../controllers/neo.controller.js';
 //COMPLETE the router
-router.get('/feed', );
+const neoRouter = Router();
+neoRouter.get('/feed', getNeoFeedController);
 
-
-module.exports = router;
+export default neoRouter;

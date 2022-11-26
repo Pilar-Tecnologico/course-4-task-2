@@ -1,9 +1,11 @@
-require('dotenv').config();
-module.exports = {
-    services: {
-        nasa: {
-            hostname: 'https://api.nasa.gov',
-            apikey: process.env.NASA_API,
-        }
-    }
-}
+import axios from 'axios';
+import 'dotenv/config';
+
+const services = {
+  apikey: process.env.NASA_API,
+  API: axios.create({
+    baseURL: 'https://api.nasa.gov',
+  }),
+};
+
+export default services;
