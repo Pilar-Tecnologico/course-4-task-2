@@ -1,6 +1,6 @@
 {
   "name": "task-2",
-  "version": "0.20.22",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
