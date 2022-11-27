@@ -3,8 +3,9 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 require('dotenv').config();
-const marsRouter = require('./routes/mars');
-const neoRouter = require('./routes/neo');
+
+const marsRouter = require('./src/routes/mars.router.js');
+const neoRouter = require('./src/routes/neo.router.js');
 const app = express();
 
 app.use(logger('dev'));
