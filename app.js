@@ -13,7 +13,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/mars', marsRouter);
+app.get('/mars/manifests/:roverName', marsRouter);
 app.use('/neo', neoRouter);
 
 module.exports = app;
