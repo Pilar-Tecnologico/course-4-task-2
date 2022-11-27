@@ -4,6 +4,7 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 require('dotenv').config();
 const marsRouter = require('./routes/mars');
+const marsPhotosRouter = require('./routes/marsph');
 const neoRouter = require('./routes/neo');
 const app = express();
 
@@ -13,7 +14,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/mars', marsRouter);
+app.get('/mars/manifests/:roverName', marsRouter);
+app.get('/mars/photos/:roverName', marsPhotosRouter);
 app.use('/neo', neoRouter);
 
 module.exports = app;
