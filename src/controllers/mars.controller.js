@@ -1,14 +1,14 @@
-const axios = require('axios').default;
-const config = require('config');
-const {hostname, apikey} = config.get('services.nasa');
+const {getManifest} = require('../services/manifest.service');
 
 async function getManifestController(req, res, next){
-    //COMPLETE WITH YOUR CODE
+    const data = req.query;
+    const {roverName} = req.params;
     try {
-        const response = await axios.get(``);
-        res.json(response.data);
-    } catch (error) {
-        res.status(500).json(error);
+        const response = await getManifest(data, roverName);
+        res.json(response);
+    }
+      catch (error) {
+        next(error);
     }
 };
 
