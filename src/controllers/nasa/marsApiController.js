@@ -7,7 +7,12 @@ async function getManifestController(req, res, next){
         res.json(response);
 
     } catch (error) {
-        axios.res.status(400).json(error);
+        const err = new Error();
+        Object.assign(err, {
+            code: 'bad_request',
+            details: error.mesagge,
+        })
+        next(error);
     }
 }
 

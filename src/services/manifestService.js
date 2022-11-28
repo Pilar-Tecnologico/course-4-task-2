@@ -20,14 +20,8 @@ async function getManifest(data){
         return response.data.photo_manifest;
         //res.json(response.data.photo_manifest);
 
-    } catch () {
-        /*const err = new Error();
-        Object.assign(err,{
-            status: 400,
-            code: "bad_request",
-            message: "Bad request. Please check your parameters values"
-        })*/
-        return false;
+    } catch (error) {
+        next (error);
     }
 }
 
