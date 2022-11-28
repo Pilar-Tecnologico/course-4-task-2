@@ -3,7 +3,8 @@ module.exports = {
     services: {
         nasa: {
             hostname: 'https://api.nasa.gov',
-            apikey: process.env.NASA_API,
+            manifest: '/mars-photos/api/v1/manifests',
+            apikey: process.env.API_KEY,
         }
     }
 }
