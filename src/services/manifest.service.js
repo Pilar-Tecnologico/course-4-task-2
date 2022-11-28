@@ -1,4 +1,3 @@
-const axios = require('axios').default;
 const config = require('config');
 const { nasaInstance, apikey } = config.get('services.nasa');
 
