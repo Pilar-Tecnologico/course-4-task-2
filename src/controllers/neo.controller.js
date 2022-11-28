@@ -12,6 +12,6 @@ async function getNeoFeedController(req, res, next){
 			message: 'Something went wrong',
 		});
 	}
-};
+}
 
 module.exports = { getNeoFeedController };

@@ -13,6 +13,6 @@ async function getManifestController(req, res, next){
 			message: 'Bad request. Please check your parameters values',
 		});
 	}
-};
+}
 
 module.exports = { getManifestController };

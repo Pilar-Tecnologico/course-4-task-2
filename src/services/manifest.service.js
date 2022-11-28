@@ -1,6 +1,6 @@
 const axios = require('axios').default;
 const config = require('config');
-const {hostname, apikey} = config.get('services.nasa');
+const { hostname, apikey } = config.get('services.nasa');
 
 const getRover = async (roverName) => {
     const response = await axios.get(
