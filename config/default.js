@@ -4,6 +4,6 @@ module.exports = {
         nasa: {
             hostname: 'https://api.nasa.gov',
             apikey: process.env.NASA_API,
-        }
+        },
     }
 }
