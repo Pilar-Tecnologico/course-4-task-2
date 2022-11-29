@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
-//COMPLETE the router
-router.get('/feed', );
+const {getNeoFeedController} = require('../../controllers/nasa/neoApiController')
+const {errorHandler} = require('../../middlewares/errorHandlerMiddleware')
 
+router.get('/neo/feed', getNeoFeedController, errorHandler);
 
 module.exports = router;

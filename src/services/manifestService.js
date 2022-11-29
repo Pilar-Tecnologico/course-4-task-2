@@ -6,7 +6,6 @@ async function getManifest(data){
     const query = new URLSearchParams({
         api_key : apikey
     });
-    console.log(query);
     const querystring = query.toString();
     try {
         const roverName = data.roverName
@@ -18,10 +17,13 @@ async function getManifest(data){
             last_manifest: lastManifest
         }
         return response.data.photo_manifest;
-        //res.json(response.data.photo_manifest);
 
     } catch (error) {
-        next (error);
+        const err = new Error();
+        Object.assign(err, {
+            code: 'bad_request',
+        })
+        throw err;
     }
 }
 
