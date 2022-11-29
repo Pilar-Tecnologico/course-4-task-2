@@ -3,6 +3,6 @@ const router = express.Router();
 const {getNeoFeedController} = require('../../controllers/nasa/neoApiController')
 const {errorHandler} = require('../../middlewares/errorHandlerMiddleware')
 
-router.get('/neo/feed', getNeoFeedController, errorHandler);
+router.get('/feed', getNeoFeedController, errorHandler);
 
 module.exports = router;
