@@ -21,7 +21,10 @@ async function getNeoFeedService(req, res, next){
      const response = await axios.get(`${hostname}${apod_path}?${queryString}`);
      return response.data;
     } catch (error) {
-     res.status(500).json(error);
+     res.status(400).json({
+        "code": "bad_request",
+        "message": "Bad request. Please check your parameters values"
+    });
     }
  };
 
