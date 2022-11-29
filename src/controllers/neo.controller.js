@@ -1,9 +1,17 @@
-const axios = require('axios').default;
-const config = require('config');
-const {hostname, apikey} = config.get('services.nasa');
+const {getNeoFeedService} = require("../services/neoFeed.service")
 
 async function getNeoFeedController(req, res, next){
-    //COMPLETE WITH YOUR CODE
+    const data = req.query
+    try {
+        const neoFeed = await getNeoFeedService(data)
+        res.json(neoFeed)
+        
+    } catch (error) {
+        res.status(500).json({
+            "code": "bad_request",
+            "message": "Bad request. Please check your parameters values"
+        })
+    }
 };
 
 module.exports = {getNeoFeedController};
