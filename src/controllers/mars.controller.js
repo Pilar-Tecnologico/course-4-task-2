@@ -1,16 +1,11 @@
-const {getRover} = require('../services/manifest.service');
+const axios = require('axios').default;
+const config = require('config');
+//const {hostname, apikey} = config.get('services.nasa');
 
-async function getManifestController(req, res, next) {
-    const {roverName} = req.query;
-    try {
-        const rover = await getRover(roverName)
-        res.json({rover})
-    } catch (error) {
-        res.status(400).json({
-            "code": "bad_request",
-            "message": "Bad request. Please check your parameters values"
-        })
-    }
-}
+async function getManifestController(req, res, next){
+    res.json({
+        msj: "Esto es una prueba"
+    })
+};
 
 module.exports = {getManifestController};

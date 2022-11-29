@@ -1,16 +1,23 @@
 const axios = require('axios').default;
 const config = require('config');
-const nasaConfig = require("config").get("services.nasa");
-const NASA_HOST = nasaConfig.hostname
-const API_KEY = nasaConfig.API_KEY
+const { json } = require('express');
+const {hostname,apod_path_mars,api_key} = config.get("services.nasa");
 
-async function getRover(roverName){
-    const response = await axios.get(`${NASA_HOST}/mars-photos/api/v1/manifests/${roverName}?apikey=${API_KEY}`);
-    const {name, landing_date, landing_lunch, status, max_sol, max_date, total_photos, photos } = response.data.photo_manifest
-    const manifest_last = photos[photos.lenght -1 ];
-    return {
-        name, landing_date, landing_lunch, status, max_sol, max_date, total_photos, photos, manifest_last
+async function getManifestService(req,res, next){
+    const roverName = req.params.roverName;
+    try {
+    const response = await axios.get(`${hostname}${apod_path_mars}${roverName}/?api_key=${api_key}`);
+
+        const resData = response.data.photo_manifest;
+        resData['last_manifest']=resData.photos.pop();
+        delete resData.photos;
+        res.status(200).json(resData);
+    } catch (error) {
+     res.status(500).json({
+        "code": "internal_server_error",
+        "message": "Something went wrong"
+    });
     }
-};
+ };
 
-module.exports = {getRover};
+ module.exports = {getManifestService};
