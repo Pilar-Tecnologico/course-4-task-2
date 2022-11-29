@@ -1,9 +1,13 @@
-const axios = require('axios').default;
-const config = require('config');
-const {hostname, apikey} = config.get('services.nasa');
+const { manifestService } = require("../services/manifest.service");
 
-async function getManifestController(req, res, next){
-    //COMPLETE WITH YOUR CODE
-};
+async function getManifestController(req, res, next) {
+  try {
+    const data = req.params;
+    const response = await manifestService(data);
+    res.json(response);
+  } catch (error) {
+    next(error);
+  }
+}
 
-module.exports = {getManifestController};
+module.exports = { getManifestController };

@@ -1,9 +1,13 @@
-const axios = require('axios').default;
-const config = require('config');
-const {hostname, apikey} = config.get('services.nasa');
+const { neoFeedService } = require("../services/neoFeed.service");
 
-async function getNeoFeedController(req, res, next){
-    //COMPLETE WITH YOUR CODE
-};
+async function getNeoFeedController(req, res, next) {
+ 
+  try {
+    const response = await neoFeedService();
+    res.json(response);
+  } catch (error) {
+    next(error);
+  }
+}
 
-module.exports = {getNeoFeedController};
+module.exports = { getNeoFeedController };
