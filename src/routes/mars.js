@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
 //COMPLETE the router
-router.get('/manifests/:roverName', );
-
+const {getManifestService} = require("../services/manifest.service")
+router.get('/manifests/:roverName', getManifestService );
 module.exports = router;
