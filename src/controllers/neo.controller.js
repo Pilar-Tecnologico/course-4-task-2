@@ -1,13 +1,13 @@
 const {getNeoFeedService} = require("../services/neoFeed.service")
 
 async function getNeoFeedController(req, res, next){
-    const {start_date, start_end} = req.query;
+    const data = req.query
     try {
-        const rover = await getRover(roverName)
-        res.json({rover})
+        const neoFeed = await getNeoFeedService(data)
+        res.json(neoFeed)
         
     } catch (error) {
-        res.status(400).json({
+        res.status(500).json({
             "code": "bad_request",
             "message": "Bad request. Please check your parameters values"
         })

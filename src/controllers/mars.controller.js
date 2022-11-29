@@ -1,10 +1,10 @@
 const {getRover} = require('../services/manifest.service');
 
 async function getManifestController(req, res, next) {
-    const {roverName} = req.query;
+    const data = req.query;
     try {
-        const rover = await getRover(roverName)
-        res.json({rover})
+        const rover = await getRover(data)
+        res.json(rover)
         
     } catch (error) {
         res.status(400).json({
