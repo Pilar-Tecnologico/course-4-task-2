@@ -1,17 +1,26 @@
 const axios = require('axios').default;
-const { DateTime } = require('luxon');
 const config = require('config');
-const { response } = require('express');
-const { hostname, apikey } = config.get('services.nasa');
+const {json} = require('express');
 
-const getNeoFeedService = async () => {
-	const today = DateTime.now().toFormat('yyyy-MM-dd');
-	const { data } = await axios.get(
-		`${hostname}/neo/rest/v1/feed?api_key=${apikey}&start_date=${today}&end_date=${today}`
-	);
+const {hostname,apod_path,api_key} = config.get("services.nasa");
 
-	delete data.links;
-	return data;
-};
+const {DateTime} = require("luxon");
+const DayDate = DateTime.now().toFormat("yyyy-MM-dd");
 
-module.exports = { getNeoFeedService };
+async function getNeoFeedService(req, res, next){
+    const query = new URLSearchParams({
+        ...req.query,
+        start_date : DayDate,
+        end_date : DayDate,
+        api_key: api_key
+     });
+     const queryString = query.toString();
+    try {
+     const response = await axios.get(`${hostname}${apod_path}?${queryString}`);
+     return response.data;
+    } catch (error) {
+     res.status(500).json(error);
+    }
+ };
+
+module.exports = {getNeoFeedService};

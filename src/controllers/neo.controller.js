@@ -1,26 +1,14 @@
-const axios = require('axios').default;
-const querystring = require('querystring');
-const apikey = process.env.API_KEY;
+const NoeServices = require("../services/neoFeed.service")
 
-async function getNeoFeed(req, res){
-    const now = `${new Date().getFullYear()}-${new Date().getMonth()+1}-${new Date().getDate()}`;
-    const paramsQuery = querystring.stringify({start_date: now, end_date: now, api_key:apikey});
-    const url=`https://api.nasa.gov/neo/rest/v1/feed?${paramsQuery}`;
-    await axios.get(url)
-        .then((response) =>{
-            console.log(response.data.url);
-            const data = response.data;
-            res.json(data);
-            delete data.links;
-            res.status(200).json(data);     
-        })
-        .catch((err) => {
-            console.log(err.message);
-            res.status(500).json({
-              code: "internal_server_error",
-              message: "Something went wrong"
-            });
-        });
+async function getNeoFeedController(req, res, next){
+
+   const data = req.query;
+   try {
+    const response = await NoeServices.getNeoFeedService(data);
+    res.json(response)
+   } catch (error) {
+    res.status(500).json(error);
+   }
 };
 
-module.exports = {getNeoFeed};
+module.exports = {getNeoFeedController};
