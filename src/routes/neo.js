@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
-//COMPLETE the router
-router.get('/feed', );
+const { getNeoFeedController } = require('../controllers/neo.controller');
+const {errorHandler}= require('../middlewares/errorHandler.middleware')
 
 
+router.get('/feed', getNeoFeedController, errorHandler);
 module.exports = router;

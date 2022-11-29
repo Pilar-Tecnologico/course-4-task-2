@@ -1,0 +1,13 @@
+{
+  "bad_request": {
+    "status": 400,
+    "code": "bad_request",
+    "message": "Bad request. Please check your parameters values"
+  },
+  "internal_server_error": {
+    "status": 500,
+    "code": "internal_server_error",
+
+    "message": "Something went wrong"
+  }
+}

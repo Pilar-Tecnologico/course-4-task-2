@@ -1,6 +1,8 @@
-const express = require('express');
+const express = require("express");
+const { getManifestController } = require("../controllers/mars.controller");
+const { errorHandler } = require("../middlewares/errorHandler.middleware");
 const router = express.Router();
-//COMPLETE the router
-router.get('/manifests/:roverName', );
+
+router.get("/manifests/:roverName", getManifestController, errorHandler);
 
 module.exports = router;
