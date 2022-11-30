@@ -1,9 +1,18 @@
-const axios = require('axios').default;
-const config = require('config');
-const {hostname, apikey} = config.get('services.nasa');
+import getRover from '../services/manifest.service.js';
 
-async function getManifestController(req, res, next){
-    //COMPLETE WITH YOUR CODE
+const getManifestController = async (req, res, next) => {
+  //COMPLETE WITH YOUR CODE
+  const { roverName } = req.params;
+
+  try {
+    const data = await getRover(roverName);
+    return res.status(200).json(data);
+  } catch (err) {
+    return res.status(400).json({
+      menssage: err.message,
+      cause: err.cause,
+    });
+  }
 };
 
-module.exports = {getManifestController};
+export default getManifestController;
